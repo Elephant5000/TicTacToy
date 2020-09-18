@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TicTacToy</string>
+    <string name="title">Крестики-Нолики</string>
+    <string name="enemy">Соперник</string>
+    <string name="x">X</string>
+    <string name="o">O</string>
 </resources>
