@@ -32,6 +32,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="0"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -41,6 +42,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="1"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -50,6 +52,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="2"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -67,6 +70,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="3"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -76,6 +80,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="4"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -85,6 +90,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="5"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -101,6 +107,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="6"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -110,6 +117,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="7"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
@@ -119,6 +127,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:onClick="onButtonClick"
+            android:tag="8"
             android:text="@string/x"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
