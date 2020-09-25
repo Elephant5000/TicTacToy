@@ -1,7 +1,5 @@
 package ru.job4j.tictactoy;
 
-import android.widget.Toast;
-
 /**
  * Класс реализующий логику игры крестики нолики
  * whoseMove - чей ход. false - первый игрок, true - второй
@@ -13,6 +11,7 @@ import android.widget.Toast;
 public class Logic {
     private boolean whoseMove = false;
     private boolean playerPC = false;
+    private byte moveCounter = 0;
     private byte[] board = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 
@@ -32,6 +31,18 @@ public class Logic {
         this.playerPC = playerPC;
     }
 
+    public byte getMoveCounter() {
+        return this.moveCounter;
+    }
+
+    public void setMoveCounter(byte moveCounter) {
+        this.moveCounter = moveCounter;
+    }
+
+    public void incMoveCounter () {
+        this.moveCounter++;
+    }
+
     public byte[] getBoard() {
         return board;
     }
@@ -41,8 +52,10 @@ public class Logic {
     }
 
     public void setMove(int move) {
+        if (this.board[move] != 0) return;
         this.board[move] = (byte) (whoseMove ? 2 : 1);
         this.whoseMove = !this.whoseMove;
+        incMoveCounter();
     }
 
     public byte checkWin() {
@@ -75,7 +88,7 @@ public class Logic {
             win = this.board[0];
             return win;
         }
-        if (this.board[2] != 0 && this.board[2] == this.board[4] && this.board[2] == this.board[4])  {
+        if (this.board[2] != 0 && this.board[2] == this.board[4] && this.board[2] == this.board[6])  {
             win = this.board[2];
             return win;
         }
@@ -83,7 +96,8 @@ public class Logic {
     }
 
     public void newGame() {
-        this.whoseMove = false;
+        this.setWhoseMove(false);
+        this.setMoveCounter((byte) 0);
         for (int index = 0; index <9; index ++) {
             this.board[index] = 0;
         }

@@ -4,13 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
 
     Logic game = new Logic();
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
             game.setBoard(savedInstanceState.getByteArray("GameBoard"));
             game.setWhoseMove(savedInstanceState.getBoolean("WhoseMove"));
             game.setWhoseMove(savedInstanceState.getBoolean("PlayerPC"));
+            game.setMoveCounter(savedInstanceState.getByte("MoveCounter"));
+            Log.d(TAG, "Restore - MoveCounter - " + String.valueOf(savedInstanceState.getByte("MoveCounter")));
+            Log.d(TAG, "Restore - WhoseMove - " + savedInstanceState.getBoolean("WhoseMove"));
         }
         paintBoard(game);
     }
@@ -30,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         outState.putByteArray("GameBoard", game.getBoard());
         outState.putBoolean("WhoseMove", game.isWhoseMove());
         outState.putBoolean("PlayerPC", game.isPlayerPC());
+        outState.putByte("MoveCounter", game.getMoveCounter());
+        Log.d(TAG, "Save MoveCounter - " + String.valueOf(game.getMoveCounter()));
+        Log.d(TAG, "Save WhoseMove - " + game.isWhoseMove());
     }
 
     /**
@@ -44,10 +54,12 @@ public class MainActivity extends AppCompatActivity {
         if (game.getBoard()[buttonIndex] == 0) {
             game.setMove(buttonIndex);
             paintBoard(game);
-            if (game.checkWin() > 0) {
+            if (game.checkWin() > 0 || game.getMoveCounter() > 8) {
                 endGame();
             }
         }
+        Log.d(TAG, "Click MoveCounter - " + String.valueOf(game.getMoveCounter()));
+        Log.d(TAG, "Click WhoseMove - " + game.isWhoseMove());
     }
 
     public void paintBoard(Logic board) {
