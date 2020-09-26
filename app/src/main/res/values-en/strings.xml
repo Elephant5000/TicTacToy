@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TicTacToy</string>
+    <string name="enemy">Enemy PC|Human</string>
+    <string name="o">O</string>
+    <string name="x">X</string>
+    <string name="title">TicTacToy</string>
+    <string name="winer">"Win - "</string>
+    <string name="draw">Draw</string>
+    <string name="NewGame">New Game</string>
+</resources>

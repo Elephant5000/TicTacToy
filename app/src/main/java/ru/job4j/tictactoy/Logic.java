@@ -2,18 +2,34 @@ package ru.job4j.tictactoy;
 
 /**
  * Класс реализующий логику игры крестики нолики
- * whoseMove - чей ход. false - первый игрок, true - второй
+ * whoseMove - чей ход. false - первый игрок (X), true - второй (O)
  * playerPC - с кем играем. false - c человеком, true - с компьютером
+ * nextFirstMove - кто ходит первым в игре. false - первый игрок (X), true - второй (O)
+ * endGame - флвг окончания игры (Нужен для блокировки кнопок в законченной партии)
+ * moveCounter - счетчик ходов. Для определеня окончания игры в случае отсутствия победителя
  * board - игровое поле. 0 - пусто. 1 - крестик, 2 - нолик.
 
  */
 
 public class Logic {
-    private boolean whoseMove = false;
-    private boolean playerPC = false;
-    private byte moveCounter = 0;
-    private byte[] board = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    private static Logic instance;
+    private boolean whoseMove;
+    private boolean playerPC;
+    private boolean nextFirstMove;
+    private boolean endGame;
+    private byte moveCounter;
+    private byte[] board = new byte[9];
 
+    private Logic() {
+        this.whoseMove = false;
+        this.playerPC = false;
+        this.nextFirstMove = false;
+        this.endGame = false;
+        this.moveCounter = 0;
+        for (int index = 0; index <9; index ++) {
+            this.board[index] = 0;
+        }
+    }
 
     public boolean isWhoseMove() {
         return whoseMove;
@@ -29,6 +45,29 @@ public class Logic {
 
     public void setPlayerPC(boolean playerPC) {
         this.playerPC = playerPC;
+    }
+
+    public boolean isNextFirstMove() {
+        return nextFirstMove;
+    }
+
+    public void setNextFirstMove(boolean nextFirstMove) {
+        this.nextFirstMove = nextFirstMove;
+    }
+
+    public boolean isEndGame() {
+        return endGame;
+    }
+
+    public void setEndGame(boolean endGame) {
+        this.endGame = endGame;
+    }
+
+    public static Logic getInstance() {
+        if (instance == null) {
+            instance = new Logic();
+        }
+        return instance;
     }
 
     public byte getMoveCounter() {
@@ -95,12 +134,13 @@ public class Logic {
         return win;
     }
 
-    public void newGame() {
-        this.setWhoseMove(false);
+    public void newGame(boolean firstMove) {
+        this.setWhoseMove(firstMove);
         this.setMoveCounter((byte) 0);
         for (int index = 0; index <9; index ++) {
             this.board[index] = 0;
         }
+        this.endGame = false;
     }
 
 }

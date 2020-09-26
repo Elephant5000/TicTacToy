@@ -14,10 +14,11 @@
         android:text="@string/title" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switchPCHuman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:onClick="onClickPcHuman"
         android:text="@string/enemy"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -132,5 +133,13 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:ignore="ButtonStyle" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickNewGame"
+        android:text="@string/NewGame"
+        android:visibility="invisible" />
 
 </LinearLayout>
