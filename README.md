@@ -2,7 +2,6 @@
 
 ## Screen
 ![ScreenShot](images/screen.png)
-https://github.com/Elephant5000/TicTacToy/blob/master/images/screen.png
 
 ## Правила игры
 ### Возможность игры ссамим с собой и с AI
