@@ -143,4 +143,16 @@ public class Logic {
         this.endGame = false;
     }
 
+    public void aiMove() {
+        if (board[4] == 0) {
+            setMove(4);
+        } else {
+            for (int index = 0; index <= 8; index++) {
+                if (board[index] == 0) {
+                    setMove(index);
+                    break;
+                }
+            }
+        }
+    }
 }

@@ -4,16 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
-
-import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
      * Обработчик нажатия кнопок
      * Все кнопки имеют заполненное поле tag заполненное соответствующим значением от 0 до 8.
      * Передаем это значение в метод game.setMove(int index) и перерисовываем игровое поле.
-     * @param view
+     *
      */
 
     public void onButtonClick(View view) {
@@ -60,20 +55,14 @@ public class MainActivity extends AppCompatActivity {
             if (game.checkWin() > 0 || game.getMoveCounter() > 8) {
                 endGame();
             } else if (game.isPlayerPC()) {
-                pcMove();
+                aiMove();
             }
         }
     }
 
-    public void pcMove() {
+    public void aiMove() {
         if (game.isPlayerPC() && game.isWhoseMove()) {
-            for (int index = 0; index <= 8; index++) {
-                // Тут реализация алгоритма AI (пока отсутствует)
-                if (game.getBoard()[index] == 0) {
-                    game.setMove(index);
-                    break;
-                }
-            }
+            game.aiMove();
             paintBoard(game);
             if (game.checkWin() > 0 || game.getMoveCounter() > 8) {
                 endGame();
@@ -85,13 +74,17 @@ public class MainActivity extends AppCompatActivity {
     public void onClickPcHuman(View view) {
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchPCHuman = findViewById(R.id.switchPCHuman);
         game.setPlayerPC(switchPCHuman.isChecked());
-        pcMove();
+        aiMove();
     }
 
+    /**
+     * Отрисовка состояния игрового поля на экране
+     *
+     */
 
     public void paintBoard(Logic board) {
         for (int index = 0; index <= 8; index++) {
-            Button button = findViewById(getResources().getIdentifier("button" + String.valueOf(index), "id", this.getPackageName()));
+            Button button = findViewById(getResources().getIdentifier("button" + index, "id", this.getPackageName()));
             if (board.getBoard()[index] == 0) {
                 button.setText("");
             } else if (board.getBoard()[index] == 1) {
@@ -102,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Вывод сообщений при окончании игры и устанвка флага endGame
+     */
+
     public void endGame() {
         String message;
         game.setNextFirstMove(game.isWhoseMove());
@@ -110,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 message = getString(R.string.draw);
                 break;
             case 1:
-                message = getString(R.string.winer) + " " + getString(R.string.x);;
+                message = getString(R.string.winer) + " " + getString(R.string.x);
                 game.setNextFirstMove(true);
                 break;
             case 2:
@@ -130,6 +127,6 @@ public class MainActivity extends AppCompatActivity {
         game.newGame(game.isNextFirstMove());
         paintBoard(game);
         findViewById(R.id.buttonNewGame).setVisibility(View.INVISIBLE);
-        pcMove();
+        aiMove();
     }
 }
