@@ -1,7 +1,8 @@
 # Игра крестики нолики в рамках курса Job4j по мобильной разработке
 
 ## Screen
-![ScreenShot](images/androidstudio.png)
+![ScreenShot](images/screen.png)
+https://github.com/Elephant5000/TicTacToy/blob/master/images/screen.png
 
 ## Правила игры
 ### Возможность игры ссамим с собой и с AI
