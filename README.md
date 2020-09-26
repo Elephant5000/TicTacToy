@@ -11,5 +11,5 @@
  
 
 ## Контакты
-*my@e-mail.com
+my@e-mail.com
 [Vk](https://vk.com/)
